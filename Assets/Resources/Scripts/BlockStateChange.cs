@@ -11,6 +11,7 @@ public class BlockStateChange : MonoBehaviour {
     private bool hitDivider = false;    //if the block has collided with the middle divider
     private int startLayer;             //initial layer for the block
 
+   
     private List<GameObject> blocks;
     private Material startMat;
 
@@ -20,6 +21,8 @@ public class BlockStateChange : MonoBehaviour {
         startLayer = gameObject.layer;
         counttext = GameObject.Find("CountText");
         startMat = gameObject.GetComponent<MeshRenderer>().material;
+
+       
     }
 
 	void OnTriggerEnter(Collider collider)
@@ -36,7 +39,25 @@ public class BlockStateChange : MonoBehaviour {
         else if (collider.gameObject == goalSide)
         {
             gameObject.GetComponent<MeshRenderer>().material = startMat;
+            Score.count++;
+            if (gameObject.layer == 9)
+            {
+                if (Score.count > Score.maxScoreLeft)
+                {
+                    Score.maxScoreLeft = Score.count;
+                }
+                
+            }
+            else if(gameObject.layer == 8)
+            {
+                if (Score.count > Score.maxScoreRight)
+                {
+                    Score.maxScoreRight = Score.count;
+                }
+            }
+            Debug.Log(Score.maxScoreLeft);
             counttext.GetComponent<CountUp>().incrementCount();
+            
             //spawnblocks.GetComponent<SpawnBlocks>().DecrementBlocks();
         }
         //if block drops back into start side, reset its layer to left/right grabbable

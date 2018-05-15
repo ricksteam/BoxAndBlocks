@@ -7,8 +7,11 @@ public class CountDown : MonoBehaviour {
     public Grab righthand;
     public GameObject leftbutton;
     public GameObject rightbutton;
+    public GameObject data;
+    public GameObject databtn;
     public CountUp counttext;
 
+    public GameObject scoreHolder;
     private float time;                     //countdown time (always 60 seconds)
     private float startTime = 20.00f;
     private bool startCountDown = false;    //if we are counting down
@@ -59,7 +62,11 @@ public class CountDown : MonoBehaviour {
         {
             leftbutton.gameObject.SetActive(true);
             rightbutton.gameObject.SetActive(true);
+            data.gameObject.SetActive(true);
+            databtn.gameObject.SetActive(true);
             time = startTime;
+            Score.calculateFavoriteColor();
+            scoreHolder.GetComponent<DisplayScore>().updateText();
             CountUp.txt = "Please Select a Hand...";
             CountUp.hand = 0;
             counttext.setCount(0);
