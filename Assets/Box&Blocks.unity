@@ -1044,8 +1044,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b451a2a8d0227aa40a43bfb2517edff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockPrefab: {fileID: 1336863829611316, guid: 4df44f69dfb990c4bada85dfbc1c3aba,
-    type: 2}
+  blockList:
+  - {fileID: 1328483160922874, guid: 00f8535ec0e0dd74e80fda04fe31e9cf, type: 2}
+  - {fileID: 1419784093232150, guid: de937cb48fafb2e4481be7bd80e38229, type: 2}
+  - {fileID: 1781531164439986, guid: e54c6a2c6bdbda44cae08663e7bb1c9c, type: 2}
   numOfBlocks: 150
   blockInterval: 100
   otherSpawnPoint: {fileID: 1804673282}
@@ -1072,8 +1074,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.008460741, y: 0.015927263, z: 0.014916925}
-  m_Center: {x: -0.001, y: -0.002, z: -0.007}
+  m_Size: {x: 0.008460741, y: 0.015927263, z: 0.015652759}
+  m_Center: {x: -0.001, y: -0.0019999996, z: -0.006632093}
 --- !u!1 &187610743
 GameObject:
   m_ObjectHideFlags: 0
@@ -8690,8 +8692,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b451a2a8d0227aa40a43bfb2517edff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockPrefab: {fileID: 1336863829611316, guid: 4df44f69dfb990c4bada85dfbc1c3aba,
-    type: 2}
+  blockList:
+  - {fileID: 1781531164439986, guid: e54c6a2c6bdbda44cae08663e7bb1c9c, type: 2}
+  - {fileID: 1419784093232150, guid: de937cb48fafb2e4481be7bd80e38229, type: 2}
+  - {fileID: 1328483160922874, guid: 00f8535ec0e0dd74e80fda04fe31e9cf, type: 2}
   numOfBlocks: 150
   blockInterval: 100
   otherSpawnPoint: {fileID: 178108309}
@@ -8718,8 +8722,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.008460741, y: 0.015927263, z: 0.014916925}
-  m_Center: {x: 0.001, y: -0.002, z: -0.007}
+  m_Size: {x: 0.008460741, y: 0.015927263, z: 0.015679697}
+  m_Center: {x: 0.0010000003, y: -0.0019999996, z: -0.006618639}
 --- !u!1 &1824032161
 GameObject:
   m_ObjectHideFlags: 0

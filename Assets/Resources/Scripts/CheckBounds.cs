@@ -20,7 +20,7 @@ public class CheckBounds : MonoBehaviour {
         right.StopGrabbing();
 
        
-        if (coll.gameObject.name == "Block(Clone)")
+        if (coll.gameObject.name == "GreenBlock(Clone)" || coll.gameObject.name == "BlueBlock(Clone)" || coll.gameObject.name == "RedBlock(Clone)")
         {
             Destroy(coll.gameObject); 
         }

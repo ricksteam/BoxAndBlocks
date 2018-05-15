@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BlockStateChange : MonoBehaviour {
     public GameObject goalSide;         //side of the box the player is trying to move the blocks to
-    public Material goalMat;            //material to change block color upon dropping into the goal side
+    //public Material goalMat;            //material to change block color upon dropping into the goal side
     public GameObject counttext;        //the gameobject that has the UI text that displays the player's score
     public GameObject spawnblocks;      //spawnpoint and start side
     private bool hitDivider = false;    //if the block has collided with the middle divider
@@ -35,7 +35,7 @@ public class BlockStateChange : MonoBehaviour {
         //if block hits the goal side, change color and increment score
         else if (collider.gameObject == goalSide)
         {
-            gameObject.GetComponent<MeshRenderer>().material = goalMat;
+            gameObject.GetComponent<MeshRenderer>().material = startMat;
             counttext.GetComponent<CountUp>().incrementCount();
             //spawnblocks.GetComponent<SpawnBlocks>().DecrementBlocks();
         }
