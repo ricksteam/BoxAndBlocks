@@ -44,7 +44,11 @@ public class CountDown : MonoBehaviour {
         blocks = SpawnBlocks.GetSpawnedBlocks();
         foreach (GameObject i in blocks)
         {
-            i.layer = 0;
+            if (i != null)
+            {
+                i.layer = 0;
+            }
+            
         }
         InvokeRepeating("destroyBlock", 0, 0.1f);
     }
@@ -56,6 +60,8 @@ public class CountDown : MonoBehaviour {
             leftbutton.gameObject.SetActive(true);
             rightbutton.gameObject.SetActive(true);
             time = startTime;
+            CountUp.txt = "Please Select a Hand...";
+            CountUp.hand = 0;
             counttext.setCount(0);
             CancelInvoke();
             return;
@@ -64,4 +70,5 @@ public class CountDown : MonoBehaviour {
         Destroy(block);
         blocks.Remove(block);
     }
+
 }

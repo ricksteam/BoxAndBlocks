@@ -25,6 +25,7 @@ public class ButtonPress : MonoBehaviour {
     //disable pressed button, reset default material, and start block spawning
     private void Pressed()
     {
+        CountUp.hand = grabbableLayer;
         this.gameObject.SetActive(false);
         gameObject.GetComponent<MeshRenderer>().material = defaultMat;
         spawnPoint.GetComponent<SpawnBlocks>().StartSpawning(grabbableLayer);
