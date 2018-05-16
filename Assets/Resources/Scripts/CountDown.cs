@@ -13,11 +13,14 @@ public class CountDown : MonoBehaviour {
 
     public GameObject scoreHolder;
     private float time;                     //countdown time (always 60 seconds)
-    private float startTime = 20.00f;
+    private float startTime = 10.00f;
     private bool startCountDown = false;    //if we are counting down
     private List<GameObject> blocks;
+
+    Score score = new Score();
     void Start () {
         time = startTime;
+        
 	}
 
 	void Update () {
@@ -58,6 +61,7 @@ public class CountDown : MonoBehaviour {
 
     public void destroyBlock()
     {
+        
         if (blocks.Count == 0)
         {
             leftbutton.gameObject.SetActive(true);
@@ -65,8 +69,17 @@ public class CountDown : MonoBehaviour {
             data.gameObject.SetActive(true);
             databtn.gameObject.SetActive(true);
             time = startTime;
-            Score.calculateFavoriteColor();
-            scoreHolder.GetComponent<DisplayScore>().updateText();
+            //Debug.Log(counttext.getCount());
+            if (CountUp.hand == 8)
+            {
+                score.maxScoreRight = counttext.getCount(); 
+            }
+            else if (CountUp.hand == 9)
+            {
+                score.maxScoreLeft = counttext.getCount();
+            }
+            score.Save();
+           
             CountUp.txt = "Please Select a Hand...";
             CountUp.hand = 0;
             counttext.setCount(0);

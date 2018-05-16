@@ -1,42 +1,81 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-    public static int maxScoreLeft = 0;
-    public static int count = 0;
-    public static int maxScoreRight = 0;
-    public static int red = 0;
-    public static int blue = 0;
-    public static int green = 0; 
+    public int maxScoreLeft;
+    public int maxScoreRight;
 
-    public static string favoriteColor = "";
-    public static void calculateFavoriteColor()
+    public Text leftHighScore;
+    public Text rightHighScore; 
+
+    void Start()
     {
-        int max = Math.Max(Math.Max(red, blue), green);
-        if (max == blue)
-        {
-            favoriteColor = "Blue";
-        }
-        else if (max == green)
-        {
-            favoriteColor = "Green";
+        
 
-        }
-        else if (max == red)
+        Load();
+    }
+	
+     public void Save()
+    {
+        if (!PlayerPrefs.HasKey("maxScoreLeft"))
         {
-            favoriteColor = "Red";
+            PlayerPrefs.SetInt("maxScoreLeft", this.maxScoreLeft); 
         }
         else
         {
-            favoriteColor = "";
+            int prevLeft = PlayerPrefs.GetInt("maxScoreLeft");
+            Debug.Log(this.maxScoreLeft + " > " + prevLeft);
+            if (this.maxScoreLeft > prevLeft)
+            {
+                PlayerPrefs.SetInt("maxScoreLeft", this.maxScoreLeft);
+            }
         }
-        red = 0;
-        blue = 0;
-        green = 0; 
+
+        if (!PlayerPrefs.HasKey("maxScoreRight"))
+        {
+            PlayerPrefs.SetInt("maxScoreRight", this.maxScoreRight);
+        }
+        else
+        {
+            int prevRight = PlayerPrefs.GetInt("maxScoreRight");
+            if (this.maxScoreRight > prevRight)
+            {
+                PlayerPrefs.SetInt("maxScoreRight", this.maxScoreRight);
+            }
+        }
+
+        PlayerPrefs.Save();
+        Load();
     }
-     
-    
+
+    public void Load()
+    {
+        if (PlayerPrefs.HasKey("maxScoreLeft"))
+        {
+            this.maxScoreLeft = PlayerPrefs.GetInt("maxScoreLeft");
+        }
+        else
+        {
+            this.maxScoreLeft = 0;
+        }
+        if (PlayerPrefs.HasKey("maxScoreRight"))
+        {     
+            this.maxScoreRight = PlayerPrefs.GetInt("maxScoreRight");
+        }
+        else
+        {
+            this.maxScoreRight = 0;
+        }
+        updateText();
+    }
+    public void updateText()
+    {
+        leftHighScore = GameObject.Find("LeftScore").GetComponent<Text>();
+        rightHighScore = GameObject.Find("RightScore").GetComponent<Text>();
+        leftHighScore.text = "Top Score: " + this.maxScoreLeft; 
+        rightHighScore.text = "Top Score: " + this.maxScoreRight;
+    }
 }

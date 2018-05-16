@@ -39,23 +39,7 @@ public class BlockStateChange : MonoBehaviour {
         else if (collider.gameObject == goalSide)
         {
             gameObject.GetComponent<MeshRenderer>().material = startMat;
-            Score.count++;
-            if (gameObject.layer == 9)
-            {
-                if (Score.count > Score.maxScoreLeft)
-                {
-                    Score.maxScoreLeft = Score.count;
-                }
-                
-            }
-            else if(gameObject.layer == 8)
-            {
-                if (Score.count > Score.maxScoreRight)
-                {
-                    Score.maxScoreRight = Score.count;
-                }
-            }
-            Debug.Log(Score.maxScoreLeft);
+           
             counttext.GetComponent<CountUp>().incrementCount();
             
             //spawnblocks.GetComponent<SpawnBlocks>().DecrementBlocks();
