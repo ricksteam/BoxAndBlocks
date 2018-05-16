@@ -18,6 +18,7 @@ public class CountDown : MonoBehaviour {
     private List<GameObject> blocks;
 
     Score score = new Score();
+    Achievements achievement = new Achievements(); 
     void Start () {
         time = startTime;
         
@@ -72,12 +73,13 @@ public class CountDown : MonoBehaviour {
             //Debug.Log(counttext.getCount());
             if (CountUp.hand == 8)
             {
-                score.maxScoreRight = counttext.getCount(); 
+                score.maxScoreRight = counttext.getCount();       
             }
             else if (CountUp.hand == 9)
             {
                 score.maxScoreLeft = counttext.getCount();
             }
+            achievement.checkAllAchievements(counttext.getCount());
             score.Save();
            
             CountUp.txt = "Please Select a Hand...";

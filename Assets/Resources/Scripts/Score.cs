@@ -9,12 +9,18 @@ public class Score : MonoBehaviour {
     public int maxScoreRight;
 
     public Text leftHighScore;
-    public Text rightHighScore; 
+    public Text rightHighScore;
+    public Text data; 
 
+    Achievements achievements = new Achievements();
+    DisplayScore ds = new DisplayScore();
+
+     
     void Start()
     {
-        
-
+        leftHighScore = leftHighScore.GetComponent<Text>();
+        rightHighScore = rightHighScore.GetComponent<Text>();
+        data = data.GetComponent<Text>();
         Load();
     }
 	
@@ -69,13 +75,8 @@ public class Score : MonoBehaviour {
         {
             this.maxScoreRight = 0;
         }
-        updateText();
+        achievements.loadResults();
+        ds.updateText(this.maxScoreLeft, this.maxScoreRight);
     }
-    public void updateText()
-    {
-        leftHighScore = GameObject.Find("LeftScore").GetComponent<Text>();
-        rightHighScore = GameObject.Find("RightScore").GetComponent<Text>();
-        leftHighScore.text = "Top Score: " + this.maxScoreLeft; 
-        rightHighScore.text = "Top Score: " + this.maxScoreRight;
-    }
+   
 }
