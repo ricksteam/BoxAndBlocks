@@ -124,6 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalSide: {fileID: 0}
-  goalMat: {fileID: 2100000, guid: a28bc46fe61ec46459b3c7963146ff11, type: 2}
   counttext: {fileID: 0}
   spawnblocks: {fileID: 0}
+  colors:
+  - {fileID: 2100000, guid: 1dd441d1b051b2f498476b6ebc35d2e1, type: 2}
+  - {fileID: 2100000, guid: 9db070a16681ba84fb6132339666804d, type: 2}
+  - {fileID: 2100000, guid: f717dcf0c615f814b91788d17ac1992c, type: 2}
+  achievement: {fileID: 0}

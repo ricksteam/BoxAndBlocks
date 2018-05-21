@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class DisplayScore : MonoBehaviour {
 
-    Score score = new Score();
-    Achievements achievements = new Achievements();
+    public GameObject achievements;
+    public GameObject score;
 
     public Text leftHighScore;
     public Text rightHighScore;
@@ -14,23 +14,25 @@ public class DisplayScore : MonoBehaviour {
 
     public void Start()
     {
+        
         leftHighScore = GameObject.Find("LeftScore").GetComponent<Text>();
         rightHighScore = GameObject.Find("RightScore").GetComponent<Text>();
-        data = GameObject.Find("DataText").GetComponent<Text>();
+        //data = GameObject.Find("DataText").GetComponent<Text>();
         
     }
 
 public void updateText(int maxScoreLeft, int maxScoreRight)
     {
-
+        Achievements a = achievements.GetComponent<Achievements>();
+        //a.loadResults();
         leftHighScore.text = "Top Score: " + maxScoreLeft;
         rightHighScore.text = "Top Score: " + maxScoreRight;
-        data.text = "Achievements:\n\n";
-        for (int i = 0; i < achievements.achievementList.Length; i++)
+        data.text = "\n";
+        for (int i = 0; i < a.achievementList.Length; i++)
         {
-            string s = "";
-            s += achievements.achievementList[i];
-            if (achievements.completed[i] == 0)
+            string s = a.achievementList[i];
+            Debug.Log("COMPLETED: " + a.completed[i]);
+            if (a.completed[i] == 0)
             {
                 data.text += s + "\n";
             }

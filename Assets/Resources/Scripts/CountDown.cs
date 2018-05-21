@@ -17,8 +17,8 @@ public class CountDown : MonoBehaviour {
     private bool startCountDown = false;    //if we are counting down
     private List<GameObject> blocks;
 
-    Score score = new Score();
-    Achievements achievement = new Achievements(); 
+    public GameObject score;
+    public GameObject achievement;
     void Start () {
         time = startTime;
         
@@ -62,7 +62,8 @@ public class CountDown : MonoBehaviour {
 
     public void destroyBlock()
     {
-        
+        Score s = score.GetComponent<Score>();
+        Achievements a = achievement.GetComponent<Achievements>();
         if (blocks.Count == 0)
         {
             leftbutton.gameObject.SetActive(true);
@@ -73,14 +74,14 @@ public class CountDown : MonoBehaviour {
             //Debug.Log(counttext.getCount());
             if (CountUp.hand == 8)
             {
-                score.maxScoreRight = counttext.getCount();       
+                s.maxScoreRight = counttext.getCount();       
             }
             else if (CountUp.hand == 9)
             {
-                score.maxScoreLeft = counttext.getCount();
+                s.maxScoreLeft = counttext.getCount();
             }
-            achievement.checkAllAchievements(counttext.getCount());
-            score.Save();
+            a.checkAllAchievements(counttext.getCount());
+            s.Save();
            
             CountUp.txt = "Please Select a Hand...";
             CountUp.hand = 0;

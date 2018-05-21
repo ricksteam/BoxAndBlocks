@@ -11,13 +11,17 @@ public class BlockStateChange : MonoBehaviour {
     private bool hitDivider = false;    //if the block has collided with the middle divider
     private int startLayer;             //initial layer for the block
 
-   
+
+    public Material[] colors;
+
+    public GameObject achievement;
     private List<GameObject> blocks;
     private Material startMat;
 
     void Start()
     {
         //setting initial layer (left or right grababble)
+        achievement = GameObject.Find("Achievements");
         startLayer = gameObject.layer;
         counttext = GameObject.Find("CountText");
         startMat = gameObject.GetComponent<MeshRenderer>().material;
@@ -28,7 +32,7 @@ public class BlockStateChange : MonoBehaviour {
 	void OnTriggerEnter(Collider collider)
     {
         //if block hits the divider and drops, destroy it
-        if(collider.gameObject == spawnblocks && hitDivider)
+        if (collider.gameObject == spawnblocks && hitDivider)
         {
             blocks = SpawnBlocks.GetSpawnedBlocks();
             GameObject block = gameObject;
@@ -39,7 +43,21 @@ public class BlockStateChange : MonoBehaviour {
         else if (collider.gameObject == goalSide)
         {
             gameObject.GetComponent<MeshRenderer>().material = startMat;
-           
+            //Debug.Log("sta" + startMat.name);
+            if (startMat.name == "BlueMat (Instance)")
+            {
+                achievement.GetComponent<Achievements>().blue++;
+            }
+            else if (startMat == colors[1])
+            {
+
+                achievement.GetComponent<Achievements>().red++;
+            }
+            else
+            {
+                achievement.GetComponent<Achievements>().green++;
+
+            }
             counttext.GetComponent<CountUp>().incrementCount();
             
             //spawnblocks.GetComponent<SpawnBlocks>().DecrementBlocks();

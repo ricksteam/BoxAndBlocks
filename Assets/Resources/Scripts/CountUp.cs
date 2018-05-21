@@ -7,8 +7,7 @@ public class CountUp : MonoBehaviour {
     private int count;  //count of blocks on goal side
     public static int hand = 0;
     public  static string txt;
-
-    Score score = new Score();
+ 
     void Start() {
         count = 0;  //start at 0
         txt = "Please Select a Hand..."; 
@@ -48,7 +47,8 @@ public class CountUp : MonoBehaviour {
     }
     public void incrementCount()
     {
-        count++;
+        count++; 
+      
         
     }
 }
