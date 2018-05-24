@@ -34,11 +34,11 @@ public void updateText(int maxScoreLeft, int maxScoreRight)
             Debug.Log("COMPLETED: " + a.completed[i]);
             if (a.completed[i] == 0)
             {
-                data.text += s + "\n";
+                data.text += "• " + s + "\n";
             }
             else
             {
-                data.text += StrikeThrough(s) + "\n";
+                data.text += "• " + StrikeThrough(s) + "\n";
             }
 
         }

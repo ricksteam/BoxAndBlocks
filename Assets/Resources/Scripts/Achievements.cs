@@ -51,7 +51,7 @@ public class Achievements : MonoBehaviour
     }
 
 
-    void checkCompleted()
+    public void checkCompleted()
     {
         int all = 0;
         for (int i = 0; i < achievementList.Length; i++)
