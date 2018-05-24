@@ -15,7 +15,9 @@ public class Score : MonoBehaviour {
      public GameObject achievements;
      public GameObject ds;
 
-     
+    [SerializeField]
+    private bool debugMode = true;
+
     void Start()
     {
         PlayerPrefs.SetInt("maxScoreLeft", 0);
@@ -28,6 +30,18 @@ public class Score : MonoBehaviour {
         Load();
     }
 	
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && debugMode == true)
+        {
+            PlayerPrefs.SetInt("maxScoreLeft", 0);
+            PlayerPrefs.SetInt("maxScoreRight", 0);
+            PlayerPrefs.SetInt("CompletedOne", 0);
+            PlayerPrefs.SetInt("CompletedTwo", 0);
+            PlayerPrefs.SetInt("CompletedThree", 0);
+            Load();
+        }
+    }
      public void Save()
     {
         if (!PlayerPrefs.HasKey("maxScoreLeft"))
