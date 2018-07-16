@@ -59,6 +59,11 @@ public class ButtonPress : MonoBehaviour {
         }
     }
 
+    public void Start()
+    {
+       // Pressed();
+    }
+
     //disable pressed button, reset default material, and start block spawning
     private void Pressed()
     {

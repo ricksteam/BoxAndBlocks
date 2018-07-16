@@ -13,7 +13,7 @@ public class CountDown : MonoBehaviour {
 
     public GameObject scoreHolder;
     private float time;                     //countdown time (always 60 seconds)
-    private float startTime = 10.00f;
+    private float startTime = 60.00f;
     private bool startCountDown = false;    //if we are counting down
     private List<GameObject> blocks;
 
