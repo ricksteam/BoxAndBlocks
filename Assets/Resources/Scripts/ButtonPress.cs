@@ -22,9 +22,7 @@ public class ButtonPress : MonoBehaviour {
             {
                 case "Button":
                     
-                    otherButton.gameObject.SetActive(false);
-                    databtn.gameObject.SetActive(false);
-                    data.gameObject.SetActive(false);
+
                     //wait a second before disabling the button
                     Invoke("Pressed", 1);
                     break;
@@ -64,9 +62,17 @@ public class ButtonPress : MonoBehaviour {
        // Pressed();
     }
 
+    
+
     //disable pressed button, reset default material, and start block spawning
     private void Pressed()
     {
+
+        otherButton.gameObject.SetActive(false);
+        databtn.gameObject.SetActive(false);
+        data.gameObject.SetActive(false);
+        //wait a second before disabling the button
+       
         CountUp.hand = grabbableLayer;
         
         this.gameObject.SetActive(false);
